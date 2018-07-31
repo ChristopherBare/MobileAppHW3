@@ -118,7 +118,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(SignUp.this, "Cancel Button.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SignUp.this, MainActivity.class);
+                Intent intent = new Intent(SignUp.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

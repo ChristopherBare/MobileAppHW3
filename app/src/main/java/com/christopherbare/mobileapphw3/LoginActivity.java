@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private final String TAG = "Demo";
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         signUpLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SignUp.class);
+                Intent intent = new Intent(LoginActivity.this, SignUp.class);
                 startActivity(intent);
                 finish();
             }
@@ -50,17 +50,17 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Login Button.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Login Button.", Toast.LENGTH_SHORT).show();
                 String email = emailLogin.getText().toString().trim();
                 String password = passwordLogin.getText().toString().trim();
 
                 if(email.equals("")){
-                    Toast.makeText(MainActivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
                 }else if(password.equals("")){
-                    Toast.makeText(MainActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
                 }else{
                     mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
@@ -68,12 +68,12 @@ public class MainActivity extends AppCompatActivity {
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         user.getIdToken(true);
 
-                                        Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                                        Intent intent = new Intent(LoginActivity.this, ChatActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }else{
                                         Log.d("demo", "signInWithEmail:failure",task.getException());
-                                        Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(mAuth.getCurrentUser() != null){
-            Intent i = new Intent(MainActivity.this, ChatActivity.class);
+            Intent i = new Intent(LoginActivity.this, ChatActivity.class);
             startActivity(i);
             finish();
         }

@@ -8,25 +8,54 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity {
     TextView displayName;
     DialogInterface.OnClickListener dialogClickListener;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+    RecyclerView recyclerView;
+    TextView usersName;
+    ImageView logout;
+    ImageView send, addPicture;
+    EditText messageEt;
+    FirebaseStorage mStorage;
+    StorageReference storageReference;
+    MessageAdapter adapter;
+    String url;
+    ArrayList<Message> messages = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        usersName = findViewById(R.id.usersName);
+        logout = findViewById(R.id.logout);
+        send = findViewById(R.id.addMessage);
+        messageEt = findViewById(R.id.newMessage);
+        addPicture = findViewById(R.id.addPhoto);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mStorage = FirebaseStorage.getInstance();
+        storageReference = mStorage.getReference();
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -45,7 +74,7 @@ public class ChatActivity extends AppCompatActivity {
                         editor.commit();
 
                         mAuth.signOut();
-                        Intent intent = new Intent(ChatActivity.this, MainActivity.class);
+                        Intent intent = new Intent(ChatActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                         break;
