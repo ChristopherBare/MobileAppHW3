@@ -28,4 +28,5 @@
     <string name="email">Email</string>
     <string name="addContact">Add Contact</string>
     <string name="hint_password">Password</string>
+    <string name="logout">Logout</string>
 </resources>
