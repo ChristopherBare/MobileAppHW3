@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MobileAppHW3</string>
+    <string name="label_name">Name</string>
+    <string name="label_phone">Phone</string>
+    <string name="label_email">Email</string>
+    <string name="label_main">First Last</string>
+    <string name="label_id">I.D.</string>
+    <string name="label_login">Login</string>
+    <string name="label_signup">Sign Up</string>
+    <string name="hint_fName">First name</string>
+    <string name="hint_lName">Last Name</string>
+    <string name="hint_newPass">Repeat Password</string>
+    <string name="hint_confPass">Confirm Password</string>
+    <string name="option_logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="hint_email">Email</string>
+    <string name="not_registered">Not Registered?</string>
+    <string name="signUp">Sign Up!</string>
+    <string name="content">Content</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password_repeat">Repeat Password</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="title_activity_contacts">Contacts</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="addContact">Add Contact</string>
+    <string name="hint_password">Password</string>
+</resources>
