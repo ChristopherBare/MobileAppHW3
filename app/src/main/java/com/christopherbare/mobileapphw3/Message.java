@@ -11,7 +11,7 @@ public class Message implements Parcelable{
     String imageURL;
     String user;
     Date time;
-    ArrayList<Comment> comments;
+    ArrayList<Comment> comments = new ArrayList<>();
     boolean isPicture;
     String key;
 

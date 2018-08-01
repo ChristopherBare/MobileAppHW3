@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:orientation="vertical">
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@color/colorAccent">
     <!--Delete Comment Row-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,14 +15,12 @@
             android:id="@+id/delete"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_margin="16dp"
             android:src="@drawable/delete" />
 
         <ImageView
             android:id="@+id/comment"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_margin="16dp"
             android:src="@drawable/comment" />
     </LinearLayout>
     <!--Message/Picture Row-->
@@ -51,11 +50,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin = "16dp">
+        android:layout_margin = "16dp"
+        android:layout_marginTop="-16dp">
 
         <TextView
             android:id="@+id/user"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Bob smith"
@@ -69,4 +69,10 @@
             android:text="moments ago"/>
     </LinearLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerViewComments">
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

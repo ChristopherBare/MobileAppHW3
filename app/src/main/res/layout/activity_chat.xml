@@ -16,13 +16,6 @@
             android:layout_weight="1"
             android:textSize="18dp"
             android:layout_margin="16dp"/>
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/logout"
-            android:id="@+id/logout"
-            android:layout_gravity="end|center"
-            android:layout_margin="16dp"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -41,12 +34,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <EditText
+                android:id="@+id/newMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/newMessage"
-                android:textSize="14sp"
-                android:layout_margin="16dp"/>
+                android:layout_margin="16dp"
+                android:inputType="text"
+                android:textSize="14sp" />
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"

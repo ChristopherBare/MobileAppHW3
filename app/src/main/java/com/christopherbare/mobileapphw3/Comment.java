@@ -10,6 +10,10 @@ public class Comment implements Parcelable{
     String user;
     Date time;
 
+    public Comment(){
+
+    }
+
     public String getComment() {
         return comment;
     }
@@ -53,7 +57,7 @@ public class Comment implements Parcelable{
         time = (Date) in.readSerializable();
     }
 
-    public static final Creator<Comment> CREATOR = new Creator<Comment>(){
+    public static final Parcelable.Creator<Comment> CREATOR = new Parcelable.Creator<Comment>(){
         @Override
         public Comment createFromParcel(Parcel in) {
             return new Comment(in);
