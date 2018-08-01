@@ -102,7 +102,7 @@ public class Message implements Parcelable{
         comments = (ArrayList<Comment>) in.readSerializable();
     }
 
-    public static final Creator<Message> CREATOR = new Creator<Message>(){
+    public static final Parcelable.Creator<Message> CREATOR = new Parcelable.Creator<Message>(){
         @Override
         public Message createFromParcel(Parcel in) {
             return new Message(in);

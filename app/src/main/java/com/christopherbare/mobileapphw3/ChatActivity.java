@@ -189,7 +189,6 @@ public class ChatActivity extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO Implement send features
                 Message message;
                 if(messageEt.getText() != null && !messageEt.getText().toString().isEmpty() && !messageEt.getText().toString().equals("")){
                     message = new Message(messageEt.getText().toString(), mAuth.getCurrentUser().getDisplayName(), Calendar.getInstance().getTime(), false);
