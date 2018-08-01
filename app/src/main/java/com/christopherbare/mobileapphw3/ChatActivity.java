@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -145,10 +146,15 @@ public class ChatActivity extends AppCompatActivity {
         adapter = new MessageAdapter(ChatActivity.this, messages, new MessageAdapter.SendData() {
             @Override
             public void deleteMessage(Message message) {
-                mDatabase.child("message")
-                        .child(message.key)
-                        .removeValue();
-
+                try {
+                    if (mDatabase.child("message").child(message.key).getKey() != null) {
+                        mDatabase.child("message")
+                                .child(message.key)
+                                .removeValue();
+                    }
+                } catch (Exception e) {
+                    Log.e("demo", "deleteMessage: Exception", e);
+                }
             }
 
             @Override
@@ -289,7 +295,7 @@ public class ChatActivity extends AppCompatActivity {
                     Uri downloadUri = task.getResult();
                     urlImage = downloadUri.toString();
                     Message message = new Message(urlImage, mAuth.getCurrentUser().getDisplayName(), Calendar.getInstance().getTime());
-                    finalSumbit(message);
+                    finalSubmit(message);
                 } else {
 
                 }
@@ -298,7 +304,7 @@ public class ChatActivity extends AppCompatActivity {
         return true;
     }
 
-    public void finalSumbit(Message message){
+    public void finalSubmit(Message message){
 
         mDatabase.child("message").push().setValue(message);
         newPicture.setVisibility(View.GONE);
@@ -307,5 +313,4 @@ public class ChatActivity extends AppCompatActivity {
         messages.add(message);
         adapter.notifyDataSetChanged();
     }
-
 }
